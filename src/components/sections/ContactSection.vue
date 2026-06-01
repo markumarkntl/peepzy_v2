@@ -38,7 +38,7 @@
         </h2>
         <p class="text-anime-muted text-sm lg:text-base max-w-md mx-auto leading-relaxed">
           Have a project in mind, a collab idea, or just want to say
-          <span class="text-anime-primary font-semibold">konnichiwa</span>? 👋
+          <span class="text-anime-primary font-semibold">konnichiwa</span>?
           My inbox is always open.
         </p>
       </div>
@@ -47,27 +47,28 @@
 
         <!-- ══ LEFT — Info + Socials (2 cols) ════ -->
         <div ref="leftRef" class="lg:col-span-2 opacity-0 space-y-8">
+<!-- contact info card -->
+        <div class="space-y-3">
+  <div
+    v-for="info in contactInfo"
+    :key="info.label"
+    class="info-card glass-card p-4 rounded-sm flex items-center gap-4 group transition-all duration-300 hover:border-anime-primary/30"
+    style="border: 1px solid rgba(255,255,255,0.06)"
+  >
+    <div class="w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+      :style="`background: ${info.color}15; border: 1px solid ${info.color}30; color: ${info.color}`"
+      v-html="info.icon"
+    ></div>
 
-          <!-- Contact info cards -->
-          <div class="space-y-3">
-            <div
-              v-for="info in contactInfo"
-              :key="info.label"
-              class="info-card glass-card p-4 rounded-sm flex items-center gap-4 group transition-all duration-300 hover:border-anime-primary/30"
-              style="border: 1px solid rgba(255,255,255,0.06)"
-            >
-              <div class="w-10 h-10 rounded-sm flex items-center justify-center text-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                :style="`background: ${info.color}15; border: 1px solid ${info.color}30`"
-              >{{ info.icon }}</div>
-              <div>
-                <p class="text-xs text-anime-muted uppercase tracking-wider mb-0.5">{{ info.label }}</p>
-                <a :href="info.href"
-                  class="text-sm font-semibold text-anime-text group-hover:text-anime-primary transition-colors duration-200"
-                >{{ info.value }}</a>
-              </div>
-              <span class="ml-auto text-anime-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs">→</span>
-            </div>
-          </div>
+    <div>
+      <p class="text-xs text-anime-muted uppercase tracking-wider mb-0.5">{{ info.label }}</p>
+      <a :href="info.href"
+        class="text-sm font-semibold text-anime-text group-hover:text-anime-primary transition-colors duration-200"
+      >{{ info.value }}</a>
+    </div>
+    <span class="ml-auto text-anime-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs">→</span>
+  </div>
+</div>
 
           <!-- Availability banner -->
           <div class="relative overflow-hidden rounded-sm p-4 border border-green-500/20"
@@ -91,9 +92,12 @@
 
           <!-- Social links -->
           <div>
-            <p class="text-xs text-anime-muted uppercase tracking-widest mb-4 flex items-center gap-2">
-              <span class="text-anime-primary">◆</span> Find Me On
-            </p>
+ <p class="text-xs text-anime-muted uppercase tracking-widest mb-4 flex items-center gap-2">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-anime-primary">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+  Find Me On
+</p>
             <div class="grid grid-cols-2 gap-3">
               <a
                 v-for="social in socials"
@@ -116,15 +120,14 @@
             </div>
           </div>
 
-          <!-- Fun quote -->
-          <div class="relative p-4 rounded-sm"
-            style="background: rgba(255,107,157,0.04); border-left: 2px solid var(--anime-primary)"
-          >
-            <p class="text-sm text-anime-muted italic leading-relaxed">
-              "The best interfaces are the ones that feel like magic — effortless, beautiful, and alive."
-            </p>
-            <p class="text-xs text-anime-primary font-semibold mt-2">— Yuki Tanaka</p>
-          </div>
+       <!-- Asanagi Umi Deep Quote -->
+<div class="relative p-4 rounded-sm"
+     style="background: rgba(255,107,157,0.04); border-left: 2px solid var(--anime-primary)">
+ <p class="text-sm text-anime-muted italic leading-relaxed">
+    "Tolong jangan pernah berubah. Tetaplah jadi satu-satunya tempatku pulang saat aku sudah lelah berpura-pura kuat"
+  </p>
+  <p class="text-xs text-anime-primary font-semibold mt-2">— Asanagi Umi</p>
+        </div>
         </div>
 
         <!-- ══ RIGHT — Contact form (3 cols) ═════ -->
@@ -144,77 +147,100 @@
             </h3>
 
             <!-- Success state -->
-            <Transition name="success-fade">
-              <div v-if="formState === 'success'"
-                class="absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-sm z-10"
-                style="background: rgba(5,5,8,0.95); backdrop-filter: blur(8px)"
-              >
-                <div class="text-6xl animate-bounce">🎉</div>
-                <h4 class="text-xl font-black text-anime-primary">Message Sent!</h4>
-                <p class="text-anime-muted text-sm text-center max-w-xs">
-                  Arigatou! I'll get back to you within 24 hours ✨
-                </p>
-                <button
-                  @click="resetForm"
-                  class="mt-2 px-5 py-2 border border-anime-primary text-anime-primary text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-anime-primary hover:text-anime-darker transition-all duration-300"
-                >
-                  Send Another
-                </button>
-              </div>
-            </Transition>
+<Transition name="success-fade">
+  <div v-if="formState === 'success'"
+    class="absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-sm z-10"
+    style="background: rgba(5,5,8,0.95); backdrop-filter: blur(8px)"
+  >
+    <!-- MODIFIKASI: Mengganti emoji 🎉 dengan SVG Check Circle -->
+    <div class="animate-bounce text-anime-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+    </div>
 
-            <!-- Form fields -->
+    <h4 class="text-xl font-black text-anime-primary tracking-wide">Message Sent!</h4>
+    
+    <!-- MODIFIKASI: Menghapus emoji ✨ -->
+    <p class="text-anime-muted text-sm text-center max-w-xs leading-relaxed">
+      Arigatou! I'll get back to you within 24 hours.
+    </p>
+    
+    <button
+      @click="resetForm"
+      class="mt-2 px-5 py-2 border border-anime-primary text-anime-primary text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-anime-primary hover:text-anime-darker transition-all duration-300"
+    >
+      Send Another
+    </button>
+  </div>
+</Transition>
+
             <div class="space-y-5">
-              <!-- Name + Email row -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="field-group">
-                  <label class="field-label">Your Name</label>
-                  <div class="field-wrap" :class="{ 'focused': focusedField === 'name', 'has-error': errors.name }">
-                    <span class="field-icon">👤</span>
-                    <input
-                      v-model="form.name"
-                      type="text"
-                      placeholder="peepsy"
-                      class="field-input"
-                      @focus="focusedField = 'name'"
-                      @blur="focusedField = ''; validateField('name')"
-                    />
-                  </div>
-                  <p v-if="errors.name" class="field-error">{{ errors.name }}</p>
-                </div>
-                <div class="field-group">
-                  <label class="field-label">Email Address</label>
-                  <div class="field-wrap" :class="{ 'focused': focusedField === 'email', 'has-error': errors.email }">
-                    <span class="field-icon">✉</span>
-                    <input
-                      v-model="form.email"
-                      type="email"
-                      placeholder="asanagiumi@example.com"
-                      class="field-input"
-                      @focus="focusedField = 'email'"
-                      @blur="focusedField = ''; validateField('email')"
-                    />
-                  </div>
-                  <p v-if="errors.email" class="field-error">{{ errors.email }}</p>
-                </div>
-              </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    
+    <div class="field-group">
+      <label class="field-label">Your Name</label>
+      <div class="field-wrap" :class="{ 'focused': focusedField === 'name', 'has-error': errors.name }">
+        <span class="field-icon flex items-center justify-center text-gray-500">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </span>
+        <input
+          v-model="form.name"
+          type="text"
+          placeholder="example ( bahlil )"
+          class="field-input"
+          @focus="focusedField = 'name'"
+          @blur="focusedField = ''; validateField('name')"
+        />
+      </div>
+      <p v-if="errors.name" class="field-error">{{ errors.name }}</p>
+    </div>
 
-              <!-- Subject -->
-              <div class="field-group">
-                <label class="field-label">Subject</label>
-                <div class="field-wrap" :class="{ 'focused': focusedField === 'subject' }">
-                  <span class="field-icon">📌</span>
-                  <input
-                    v-model="form.subject"
-                    type="text"
-                    placeholder="Project Collaboration / Job Offer / Just saying hi!"
-                    class="field-input"
-                    @focus="focusedField = 'subject'"
-                    @blur="focusedField = ''"
-                  />
-                </div>
-              </div>
+    <div class="field-group">
+      <label class="field-label">Email Address</label>
+      <div class="field-wrap" :class="{ 'focused': focusedField === 'email', 'has-error': errors.email }">
+        <span class="field-icon flex items-center justify-center text-gray-500">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </span>
+        <input
+          v-model="form.email"
+          type="email"
+          placeholder="asanagiumi@example.com"
+          class="field-input"
+          @focus="focusedField = 'email'"
+          @blur="focusedField = ''; validateField('email')"
+        />
+      </div>
+      <p v-if="errors.email" class="field-error">{{ errors.email }}</p>
+    </div>
+  </div>
 
+  <div class="field-group">
+    <label class="field-label">Subject</label>
+    <div class="field-wrap" :class="{ 'focused': focusedField === 'subject' }">
+      <span class="field-icon flex items-center justify-center text-gray-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+          <line x1="12" x2="12" y1="17" y2="22"></line>
+          <path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.68V6a3 3 0 0 0-3-3h-0a3 3 0 0 0-3 3v4.68a2 2 0 0 1-1.11 1.77l-1.78.9A2 2 0 0 0 5 15.24Z"></path>
+        </svg>
+      </span>
+      <input
+        v-model="form.subject"
+        type="text"
+        placeholder="Collaboration or Just saying hi!"
+        class="field-input"
+        @focus="focusedField = 'subject'"
+        @blur="focusedField = ''"
+      />
+    </div>
+  </div>
               <!-- Budget chips -->
               <div class="field-group">
                 <label class="field-label">Budget Range <span class="text-anime-muted font-normal">(optional)</span></label>
@@ -232,20 +258,27 @@
                 </div>
               </div>
 
-              <!-- Message -->
-              <div class="field-group">
-                <label class="field-label">Message</label>
-                <div class="field-wrap !items-start !py-3" :class="{ 'focused': focusedField === 'message', 'has-error': errors.message }">
-                  <span class="field-icon mt-0.5">💬</span>
-                  <textarea
-                    v-model="form.message"
-                    rows="5"
-                    placeholder="Tell me about your project, idea, or just say konnichiwa! 👋"
-                    class="field-input resize-none"
-                    @focus="focusedField = 'message'"
-                    @blur="focusedField = ''; validateField('message')"
-                  />
-                </div>
+             <!-- Message -->
+<div class="field-group">
+  <label class="field-label">Message</label>
+  <div class="field-wrap !items-start !py-3" :class="{ 'focused': focusedField === 'message', 'has-error': errors.message }">
+    
+    <!-- Ikon SVG Pesan (Menggantikan Emoji) -->
+    <span class="field-icon mt-0.5 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 opacity-70">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </span>
+    
+    <textarea
+      v-model="form.message"
+      rows="5"
+      placeholder="Tell me about your project, idea, or just say konnichiwa!"
+      class="field-input resize-none"
+      @focus="focusedField = 'message'"
+      @blur="focusedField = ''; validateField('message')"
+    />
+  </div>
                 <div class="flex justify-between mt-1">
                   <p v-if="errors.message" class="field-error">{{ errors.message }}</p>
                   <span class="ml-auto text-xs text-anime-muted font-mono">{{ form.message.length }}/500</span>
@@ -275,7 +308,7 @@
               </button>
 
               <p class="text-xs text-anime-muted text-center">
-                No spam, no bots — just a human who loves to collaborate 🌸
+                No spam, no bots — just a people who like to collaborate
               </p>
             </div>
           </div>
@@ -310,7 +343,7 @@ const errors = reactive({
   name: '', email: '', message: '',
 })
 
-const budgets = ['< $500', '$500–2K', '$2K–5K', '$5K–10K', '$10K+', 'Let\'s talk']
+const budgets = ['500–2K', '2K–5K', '5K–10K', '10K+', 'Let\'s talk']
 
 // ── Validation ───────────────────────────────────
 function validateField(field) {
@@ -349,9 +382,27 @@ function resetForm() {
 
 // ── Data ─────────────────────────────────────────
 const contactInfo = [
-  { label: 'Email',    icon: '✉',  value: 'sanrioyumec@gmail.com', href: 'mailto:sanrioyumec@gmail.com', color: '#FF6B9D' },
-  { label: 'Location', icon: '📍',  value: 'Indonesia',        href: '#',                        color: '#C084FC' },
-  { label: 'Schedule', icon: '📅',  value: 'Book a 30min call',   href: 'https://bif.telkomuniversity.ac.id/cara-belajar-pemrograman-untuk-pemula/',          color: '#38BDF8' },
+  { 
+    label: 'Email',    
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`,  
+    value: 'sanrioyumec@gmail.com', 
+    href: 'mailto:sanrioyumec@gmail.com', 
+    color: '#FF6B9D' 
+  },
+  { 
+    label: 'Location', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`,  
+    value: 'Indonesia',        
+    href: '#',                        
+    color: '#C084FC' 
+  },
+  { 
+    label: 'Schedule', 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>`,  
+    value: 'Tips',   
+    href: 'https://bif.telkomuniversity.ac.id/cara-belajar-pemrograman-untuk-pemula/',          
+    color: '#38BDF8' 
+  },
 ]
 
 const socials = [

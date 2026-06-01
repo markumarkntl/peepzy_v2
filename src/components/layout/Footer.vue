@@ -12,15 +12,19 @@
 
         <!-- ── Brand ──────────────────────────── -->
         <div class="space-y-4">
-          <div class="flex items-center gap-2">
-            <span class="text-2xl text-anime-primary" style="filter: drop-shadow(0 0 8px var(--anime-primary))">✦</span>
-            <span class="font-black tracking-widest text-sm uppercase">
-              <span class="text-anime-primary">Asanagi's</span>
-              <span class="text-anime-text">Home</span>
-            </span>
-          </div>
+  <div class="flex items-center gap-2">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-anime-primary" style="filter: drop-shadow(0 0 8px var(--anime-primary))">
+  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+  <polyline points="9 22 9 12 15 12 15 22"/>
+</svg>
+    
+    <span class="font-black tracking-widest text-sm uppercase">
+      <span class="text-anime-primary">Asanagi's</span>
+      <span class="text-anime-text"> Here</span>
+    </span>
+  </div>
           <p class="text-anime-muted text-sm leading-relaxed max-w-xs">
-            Creative developer crafting digital experiences with a touch of anime magic. ✨
+           Code, design, and smooth interactions.
           </p>
           <!-- Social icons -->
           <div class="flex items-center gap-4 pt-2">
@@ -62,7 +66,6 @@
               </span>
               <span class="text-sm text-anime-text">Available for work</span>
             </div>
-            <p class="text-anime-muted text-sm">Based in Indonesia 🇮🇩</p>
             <a href="mailto:sanrioyumec@gmail.com"
             class="inline-flex items-center gap-2 text-sm text-anime-primary hover:glow-pink transition-all duration-300">
             sanrioyumec@gmail.com
@@ -87,22 +90,32 @@
 
       <!-- ── Bottom bar ──────────────────────────── -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-anime-muted">
-        <p>
-          © {{ new Date().getFullYear() }}
-          <span class="text-anime-primary font-semibold">Yuki.dev</span>
-          — Crafted with
-          <span class="text-anime-primary">♥</span>
-          & lots of matcha 🍵
-        </p>
+      <p class="inline-flex items-center flex-wrap gap-1 text-sm">
+  © {{ new Date().getFullYear() }}
+  <span class="text-anime-primary font-semibold">peepsy</span>
+  — Crafted with
+  
+  <span class="text-anime-primary flex items-center mx-0.5" title="Code">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="16 18 22 12 16 6"></polyline>
+      <polyline points="8 6 2 12 8 18"></polyline>
+    </svg>
+  </span>
+  & coffe
+  <span class="flex items-center text-green-600 ml-0.5" title="Matcha">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+      <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+      <line x1="6" y1="2" x2="6" y2="4"/>
+      <line x1="10" y1="2" x2="10" y2="4"/>
+      <line x1="14" y1="2" x2="14" y2="4"/>
+    </svg>
+  </span>
+</p>
         <div class="flex items-center gap-1 opacity-60">
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-anime-primary animate-pulse" />
           <span>All systems nominal</span>
         </div>
-        <p class="font-mono tracking-wider">
-          <span class="text-anime-primary/60">{ </span>
-          vue · gsap · tailwind
-          <span class="text-anime-primary/60"> }</span>
-        </p>
       </div>
     </div>
 
