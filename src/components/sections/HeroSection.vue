@@ -145,12 +145,12 @@
         <div ref="socialRef" class="opacity-0 flex items-center gap-4 pt-4">
           <span class="text-xs text-anime-muted uppercase tracking-widest">Follow</span>
           <div class="w-8 h-px bg-anime-muted/30" />
-          <div class="flex gap-3">
-            <a v-for="s in quickSocials" :key="s.label"
-               :href="s.url" target="_blank" rel="noopener"
-               class="text-anime-muted hover:text-anime-primary transition-colors duration-200 text-xs uppercase tracking-widest font-semibold"
-            >{{ s.label }}</a>
-          </div>
+          <div class="flex flex-wrap gap-x-3 gap-y-1">
+  <a v-for="s in quickSocials" :key="s.label"
+     :href="s.url" target="_blank" rel="noopener"
+     class="text-anime-muted hover:text-anime-primary transition-colors duration-200 text-xs uppercase tracking-widest font-semibold"
+  >{{ s.label }}</a>
+</div>
         </div>
       </div>
     </div>
@@ -310,9 +310,9 @@ onUnmounted(() => {
 
 // ── Data ────────────────────────────────────────
 const quickSocials = [
-  { label: 'GitHub',   url: 'https://github.com' },
-  { label: 'Twitter',  url: 'https://twitter.com' },
-  { label: 'LinkedIn', url: 'https://linkedin.com' },
+  { label: 'GitHub',    url: 'https://github.com/markumarkntl' },
+  { label: 'Twitter',   url: 'https://twitter.com/pespzy' },
+  { label: 'Instagram', url: 'https://instagram.com/exclusiveryzz' },
 ]
 </script>
 
