@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --anime-primary:   #FF6B9D;
+  --anime-secondary: #C084FC;
+  --anime-accent:    #38BDF8;
+  --anime-dark:      #0F0F1A;
+  --anime-darker:    #050508;
+  --anime-text:      #E2E8F0;
+  --anime-muted:     #8888A0;
+}
+
+/* ── Base Reset ─────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--anime-darker);
+  color: var(--anime-text);
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom Scrollbar ───────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--anime-darker);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--anime-primary), var(--anime-secondary));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--anime-secondary), var(--anime-accent));
+}
+
+/* ── Selection ──────────────────────────────────── */
+::selection {
+  background: var(--anime-primary);
+  color: var(--anime-darker);
+}
+
+/* ── Utility Classes ────────────────────────────── */
+.glow-pink {
+  text-shadow:
+    0 0 10px var(--anime-primary),
+    0 0 20px var(--anime-primary),
+    0 0 40px var(--anime-primary);
+}
+
+.glow-purple {
+  text-shadow:
+    0 0 10px var(--anime-secondary),
+    0 0 20px var(--anime-secondary),
+    0 0 40px var(--anime-secondary);
+}
+
+.glow-cyan {
+  text-shadow:
+    0 0 10px var(--anime-accent),
+    0 0 20px var(--anime-accent);
+}
+
+.box-glow-pink {
+  box-shadow:
+    0 0 20px rgba(255, 107, 157, 0.3),
+    0 0 40px rgba(255, 107, 157, 0.1);
+}
+
+.box-glow-purple {
+  box-shadow:
+    0 0 20px rgba(192, 132, 252, 0.3),
+    0 0 40px rgba(192, 132, 252, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--anime-primary), var(--anime-secondary), var(--anime-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.manga-border {
+  border: 2px solid var(--anime-primary);
+  box-shadow:
+    4px 4px 0px var(--anime-secondary),
+    inset 0 0 20px rgba(255, 107, 157, 0.05);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 107, 157, 0.15);
+}
+
+/* ── Section Chapter Label ──────────────────────── */
+.chapter-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--anime-primary);
+  font-weight: 600;
+}
+
+/* ── Scanline Overlay ───────────────────────────── */
+.scanline-overlay::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 200%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanline 8s linear infinite;
+}
+
+/* ── Page Transition ─────────────────────────────── */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-16px);
+}

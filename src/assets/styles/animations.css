@@ -1,0 +1,330 @@
+/* ═══════════════════════════════════════════════════════
+   ANIME PORTFOLIO — GLOBAL ANIMATIONS
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 1. GLITCH TEXT ─────────────────────────────────────
+   Dipakai di: GlitchText.vue, HeroSection.vue
+   ──────────────────────────────────────────────────── */
+@keyframes glitch-main {
+  0%        { clip-path: inset(0 0 98% 0); transform: translate(0); }
+  5%        { clip-path: inset(30% 0 50% 0); transform: translate(-4px, 2px); }
+  10%       { clip-path: inset(60% 0 20% 0); transform: translate(4px, -2px); }
+  15%       { clip-path: inset(80% 0 5%  0); transform: translate(-2px, 1px); }
+  20%       { clip-path: inset(10% 0 70% 0); transform: translate(3px, -3px); }
+  25%       { clip-path: inset(0 0 98% 0);  transform: translate(0); }
+  100%      { clip-path: inset(0 0 98% 0);  transform: translate(0); }
+}
+
+@keyframes glitch-before {
+  0%        { clip-path: inset(0 0 98% 0); transform: translate(0);         color: #FF6B9D; }
+  5%        { clip-path: inset(20% 0 60% 0); transform: translate(-6px, 3px); color: #38BDF8; }
+  10%       { clip-path: inset(55% 0 30% 0); transform: translate(6px, -2px); color: #FF6B9D; }
+  15%       { clip-path: inset(75% 0 10% 0); transform: translate(-3px, 2px); color: #C084FC; }
+  20%       { clip-path: inset(5%  0 80% 0); transform: translate(4px, -4px); color: #38BDF8; }
+  25%       { clip-path: inset(0 0 98% 0);  transform: translate(0);         color: #FF6B9D; }
+  100%      { clip-path: inset(0 0 98% 0);  transform: translate(0);         color: #FF6B9D; }
+}
+
+@keyframes glitch-after {
+  0%        { clip-path: inset(0 0 98% 0); transform: translate(0);          color: #C084FC; }
+  5%        { clip-path: inset(40% 0 45% 0); transform: translate(8px, -1px);  color: #FF6B9D; }
+  10%       { clip-path: inset(70% 0 15% 0); transform: translate(-8px, 3px);  color: #38BDF8; }
+  15%       { clip-path: inset(15% 0 65% 0); transform: translate(4px, -2px);  color: #C084FC; }
+  20%       { clip-path: inset(85% 0 2%  0); transform: translate(-5px, 4px);  color: #FF6B9D; }
+  25%       { clip-path: inset(0 0 98% 0);  transform: translate(0);          color: #C084FC; }
+  100%      { clip-path: inset(0 0 98% 0);  transform: translate(0);          color: #C084FC; }
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  animation: glitch-before 3s infinite;
+  opacity: 0.8;
+}
+
+.glitch-text::after {
+  animation: glitch-after 3s infinite 0.1s;
+  opacity: 0.8;
+}
+
+.glitch-text.active {
+  animation: glitch-main 3s infinite 0.05s;
+}
+
+
+/* ── 2. TYPING CURSOR ───────────────────────────────────
+   Dipakai di: HeroSection.vue
+   ──────────────────────────────────────────────────── */
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50%       { border-color: var(--anime-primary); }
+}
+
+.typing-cursor {
+  border-right: 2px solid var(--anime-primary);
+  animation: blink-caret 0.75s step-end infinite;
+  padding-right: 2px;
+}
+
+
+/* ── 3. FLOATING ────────────────────────────────────────
+   Dipakai di: character image, decorative elements
+   ──────────────────────────────────────────────────── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(1deg); }
+  66%       { transform: translateY(-6px) rotate(-1deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-20px); }
+}
+
+.float-anim        { animation: float-y    6s ease-in-out infinite; }
+.float-anim-slow   { animation: float-slow 8s ease-in-out infinite; }
+.float-anim-delay  { animation: float-y    6s ease-in-out infinite 2s; }
+
+
+/* ── 4. SAKURA PETALS ───────────────────────────────────
+   Dipakai di: SakuraPetals.vue
+   ──────────────────────────────────────────────────── */
+@keyframes sakura-fall-1 {
+  0%   { transform: translateY(-5vh)  translateX(0px)   rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(105vh) translateX(80px)  rotate(540deg); opacity: 0; }
+}
+@keyframes sakura-fall-2 {
+  0%   { transform: translateY(-5vh)  translateX(0px)    rotate(45deg);  opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(105vh) translateX(-60px)  rotate(-360deg);opacity: 0; }
+}
+@keyframes sakura-fall-3 {
+  0%   { transform: translateY(-5vh)  translateX(0px)   rotate(90deg);  opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.5; }
+  100% { transform: translateY(105vh) translateX(120px) rotate(720deg); opacity: 0; }
+}
+@keyframes sakura-sway {
+  0%, 100% { margin-left: 0px; }
+  25%       { margin-left: 30px; }
+  75%       { margin-left: -20px; }
+}
+
+.sakura-petal {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10;
+  will-change: transform, opacity;
+}
+.sakura-petal:nth-child(3n+1) { animation: sakura-fall-1 var(--duration) linear var(--delay) infinite, sakura-sway calc(var(--duration) * 0.4) ease-in-out var(--delay) infinite; }
+.sakura-petal:nth-child(3n+2) { animation: sakura-fall-2 var(--duration) linear var(--delay) infinite, sakura-sway calc(var(--duration) * 0.5) ease-in-out var(--delay) infinite; }
+.sakura-petal:nth-child(3n)   { animation: sakura-fall-3 var(--duration) linear var(--delay) infinite, sakura-sway calc(var(--duration) * 0.6) ease-in-out var(--delay) infinite; }
+
+
+/* ── 5. GLOW PULSE ──────────────────────────────────────
+   Dipakai di: buttons, cards, skill icons
+   ──────────────────────────────────────────────────── */
+@keyframes glow-pulse-pink {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255,107,157,0.4),
+                0 0 20px rgba(255,107,157,0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255,107,157,0.7),
+                0 0 50px rgba(255,107,157,0.3),
+                0 0 75px rgba(192,132,252,0.2);
+  }
+}
+@keyframes glow-pulse-purple {
+  0%, 100% { box-shadow: 0 0 10px rgba(192,132,252,0.4); }
+  50%       { box-shadow: 0 0 25px rgba(192,132,252,0.7), 0 0 50px rgba(56,189,248,0.3); }
+}
+
+.glow-pulse-pink   { animation: glow-pulse-pink   2.5s ease-in-out infinite; }
+.glow-pulse-purple { animation: glow-pulse-purple 2.5s ease-in-out infinite 0.5s; }
+
+
+/* ── 6. SCANLINE ────────────────────────────────────────
+   Dipakai di: App.vue overlay
+   ──────────────────────────────────────────────────── */
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+
+/* ── 7. FADE IN VARIANTS ────────────────────────────────
+   Dipakai di: section reveals (GSAP juga pakai ini sebagai base)
+   ──────────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-scale {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.anim-fade-up         { animation: fade-up        0.7s ease forwards; }
+.anim-fade-in-left    { animation: fade-in-left   0.7s ease forwards; }
+.anim-fade-in-right   { animation: fade-in-right  0.7s ease forwards; }
+.anim-fade-scale      { animation: fade-scale     0.6s ease forwards; }
+
+/* Delay helpers */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+
+/* ── 8. BORDER SHIMMER ──────────────────────────────────
+   Dipakai di: cards, input fields
+   ──────────────────────────────────────────────────── */
+@keyframes border-shimmer {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+.border-shimmer {
+  background: linear-gradient(
+    270deg,
+    var(--anime-primary),
+    var(--anime-secondary),
+    var(--anime-accent),
+    var(--anime-primary)
+  );
+  background-size: 400% 400%;
+  animation: border-shimmer 4s ease infinite;
+}
+
+
+/* ── 9. PARTICLE DRIFT ──────────────────────────────────
+   Dipakai di: ParticleBackground.vue
+   ──────────────────────────────────────────────────── */
+@keyframes particle-drift {
+  0%   { transform: translateY(0)     translateX(0)    scale(1);   opacity: 0.6; }
+  33%  { transform: translateY(-30px) translateX(15px) scale(1.1); opacity: 0.9; }
+  66%  { transform: translateY(-15px) translateX(-10px)scale(0.9); opacity: 0.7; }
+  100% { transform: translateY(0)     translateX(0)    scale(1);   opacity: 0.6; }
+}
+
+.particle {
+  animation: particle-drift var(--p-duration, 6s) ease-in-out var(--p-delay, 0s) infinite;
+}
+
+
+/* ── 10. SKILL BAR FILL ─────────────────────────────────
+   Dipakai di: SkillsSection.vue
+   ──────────────────────────────────────────────────── */
+@keyframes skill-fill {
+  from { width: 0%; }
+  to   { width: var(--skill-level); }
+}
+
+.skill-bar-fill {
+  animation: skill-fill 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+
+/* ── 11. COUNTER SPIN ───────────────────────────────────
+   Dipakai di: AboutSection stats
+   ──────────────────────────────────────────────────── */
+@keyframes counter-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.counter-anim { animation: counter-in 0.5s ease forwards; }
+
+
+/* ── 12. MAGNETIC BUTTON RIPPLE ─────────────────────────
+   Dipakai di: CTA buttons
+   ──────────────────────────────────────────────────── */
+@keyframes ripple {
+  0%   { transform: scale(0);   opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0);
+  opacity: 0;
+}
+.btn-ripple:active::after {
+  animation: ripple 0.5s ease-out;
+}
+
+
+/* ── 13. CARD 3D TILT (CSS fallback) ────────────────────
+   GSAP handles real tilt; this is the transition base
+   ──────────────────────────────────────────────────── */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+.tilt-card:hover {
+  box-shadow:
+    0 20px 60px rgba(255, 107, 157, 0.25),
+    0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ── 14. MANGA PANEL FLASH ──────────────────────────────
+   Dipakai di: project card reveal
+   ──────────────────────────────────────────────────── */
+@keyframes manga-flash {
+  0%   { opacity: 0.8; }
+  50%  { opacity: 0.2; }
+  100% { opacity: 0; }
+}
+
+.manga-flash {
+  animation: manga-flash 0.4s ease-out forwards;
+}
+
+
+/* ── 15. NOISE TEXTURE ──────────────────────────────────
+   Subtle grain overlay on hero
+   ──────────────────────────────────────────────────── */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 1;
+}
